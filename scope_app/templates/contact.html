@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1 class="display-4 fw-bold">Contact Us</h1>
+    <p class="lead">
+        We would love to hear from you
+    </p>
+</div>
+
+<!-- Contact Section -->
+<div class="container mt-5">
+    <div class="row g-4">
+
+        <!-- Contact Info -->
+        <div class="col-md-5">
+            <div class="card p-4 shadow-sm h-100">
+                <h3 class="mb-4">Contact Information</h3>
+
+                <p>
+                    <strong>Address:</strong><br>
+                    SCOPE INDIA,<br>
+                    Technopark, Trivandrum, Kerala
+                </p>
+
+                <p>
+                    <strong>Phone:</strong><br>
+                    +91 9999548154
+                </p>
+
+                <p>
+                    <strong>Email:</strong><br>
+                    info@scopeindia.org
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-md-7">
+            <div class="card p-4 shadow-sm">
+
+            <h3 class="mb-4">Course Enquiry Form</h3>
+
+            <div class="alert alert-info">
+
+                Interested in our courses?
+
+                Fill out this enquiry form and our team will contact you soon.
+
+            </div>
+
+            <p class="text-success">{{ msg }}</p>
+
+            <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" name="subject" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" rows="5" class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-custom w-100">
+                        Submit Enquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

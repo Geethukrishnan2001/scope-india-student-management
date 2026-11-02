@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1 class="display-4 fw-bold">Student Dashboard</h1>
+    <p class="lead">
+        Explore available courses and enroll today
+    </p>
+</div>
+
+<!-- Dashboard Content -->
+<div class="container mt-5">
+
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Available Courses</h2>
+
+        <a href="/logout" class="btn btn-danger btn-custom">
+            Logout
+        </a>
+    </div>
+
+    <!-- Courses Table -->
+    <div class="card p-4 shadow-sm">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Course</th>
+                        <th>Duration</th>
+                        <th>Fee</th>
+                        <th class="text-center">Signup</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for c in courses %}
+
+                    <tr>
+                        <td>{{ c.course_name }}</td>
+                        <td>{{ c.duration }}</td>
+                        <td>₹ {{ c.fee }}</td>
+
+                        <td class="text-center">
+                            <a href="{% url 'contact' %}" class="btn btn-success btn-custom">
+                                Enquiry Now
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

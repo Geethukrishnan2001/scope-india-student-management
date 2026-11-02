@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero">
+
+    <h1 class="display-4 fw-bold">
+        Welcome to SCOPE INDIA
+    </h1>
+
+    <p class="lead">
+        Job Oriented Software Training Institute
+    </p>
+
+    <a href="/register" class="btn btn-light btn-lg mt-3 btn-custom">
+        Get Started
+    </a>
+
+</div>
+
+<!-- Courses Section -->
+<div class="container mt-5 mb-5">
+
+    <!-- Section Heading -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Our Popular Courses</h2>
+        <p class="text-muted">
+            Build your career with industry-oriented training programs
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Course 1 -->
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+
+                <div class="mb-3">
+                    <img 
+                        src="{% static 'images/python.webp' %}" 
+                        alt="Python Full Stack"
+                        class="img-fluid rounded"
+                        style="height: 200px; object-fit: cover;"
+                    >
+                </div>
+
+                <h3 class="mb-3">Python Full Stack</h3>
+
+                <p>
+                    Learn Python, Django, REST API, React,
+                    and build complete web applications.
+                </p>
+
+                <a href="/register" class="btn btn-primary btn-custom mt-2">
+                    Enroll Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+
+                <div class="mb-3">
+                    <img 
+                        src="{% static 'images/datascience.webp' %}" 
+                        alt="Data Science"
+                        class="img-fluid rounded"
+                        style="height: 200px; object-fit: cover;"
+                    >
+                </div>
+
+                <h3 class="mb-3">Data Science</h3>
+
+                <p>
+                    Master Machine Learning, AI,
+                    Data Analytics, and visualization tools.
+                </p>
+
+                <a href="/register" class="btn btn-primary btn-custom mt-2">
+                    Enroll Now
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+
+                <div class="mb-3">
+                    <img 
+                        src="{% static 'images/uiux.jpg' %}" 
+                        alt="UI UX Design"
+                        class="img-fluid rounded"
+                        style="height: 200px; object-fit: cover;"
+                    >
+                </div>
+
+                <h3 class="mb-3">UI/UX Design</h3>
+
+                <p>
+                    Create modern, responsive,
+                    and user-friendly websites and mobile apps.
+                </p>
+
+                <a href="/register" class="btn btn-primary btn-custom mt-2">
+                    Enroll Now
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

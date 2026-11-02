@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1 class="display-5 fw-bold">Student Login</h1>
+    <p class="lead">
+        Access your dashboard and continue learning
+    </p>
+</div>
+
+<!-- Login Form Section -->
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card p-4 shadow-sm">
+
+                <h2 class="text-center mb-4 fw-bold">
+                    Login Account
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        <input 
+                            type="password" 
+                            name="password" 
+                            class="form-control"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+                    <!-- Login Button -->
+                    <button 
+                        type="submit" 
+                        class="btn btn-success btn-custom w-100"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+                <!-- Register Link -->
+                <div class="text-center mt-4">
+                    <p class="mb-0">
+                        Don't have an account?
+                        <a href="/register" class="text-decoration-none fw-bold">
+                            Register Here
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero">
+
+    <h1 class="display-5 fw-bold">
+        Student Registration
+    </h1>
+
+    <p class="lead">
+        Join SCOPE INDIA and start your IT career journey
+    </p>
+
+</div>
+
+<!-- Registration Form -->
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow-sm">
+
+                <h2 class="text-center mb-4 fw-bold">
+                    Register Here
+                </h2>
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            First Name
+                        </label>
+
+                        <input 
+                            type="text" 
+                            name="first_name" 
+                            class="form-control"
+                            placeholder="Enter first name"
+                            required
+                        >
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Last Name
+                        </label>
+
+                        <input 
+                            type="text" 
+                            name="last_name" 
+                            class="form-control"
+                            placeholder="Enter last name"
+                            required
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="form-control"
+                            placeholder="Enter email"
+                            required
+                        >
+                    </div>
+                    <!-- Gender -->
+                    <div class="mb-3">
+
+                        <label>Gender</label>
+
+                        <select name="gender" class="form-control">
+
+                            <option value="">Select Gender</option>
+
+                            <option value="Male">Male</option>
+
+                            <option value="Female">Female</option>
+
+                            <option value="Other">Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Phone Number
+                        </label>
+
+                        <input 
+                            type="text" 
+                            name="phone" 
+                            class="form-control"
+                            placeholder="Enter phone number"
+                            required
+                        >
+                    </div>
+
+                    <!-- Country -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Country
+                        </label>
+
+                        <select id="country" name="country" class="form-control">
+
+                            <option value="">Select Country</option>
+
+                            {% for c in countries %}
+
+                            <option value="{{ c.id }}">{{ c.name }}</option>
+
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <!--DOB-->
+                    <div class="mb-3">
+
+                        <label>Date of Birth</label>
+
+                        <input type="date" name="dob" class="form-control" required>
+                        
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Profile Photo</label>
+
+                        <input
+                            type="file"
+                            name="avatar"
+                            class="form-control">
+
+                    </div>
+
+                    <!-- State -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            State
+                        </label>
+
+                        <select id="state" name="state" class="form-control">
+
+                            <option value="">Select State</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- City -->
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            City
+                        </label>
+
+                        <select id="city" name="city" class="form-control">
+
+                            <option value="">Select City</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Register Button -->
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary btn-custom w-100"
+                    >
+                        Register
+                    </button>
+
+                </form>
+
+                <!-- Login Link -->
+                <div class="text-center mt-4">
+
+                    <p class="mb-0">
+                        Already have an account?
+
+                        <a href="/login" class="fw-bold text-decoration-none">
+                            Login Here
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+    // LOAD STATES
+
+    $("#country").change(function(){
+
+        var country_id = $(this).val();
+
+        $.ajax({
+
+            url: "/load-states/",
+
+            data: {
+                'country': country_id
+            },
+
+            success: function(data){
+
+                $("#state").html('<option value="">Select State</option>');
+
+                $("#city").html('<option value="">Select City</option>');
+
+                $.each(data,function(key,value){
+
+                    $("#state").append(
+                        '<option value="'+ value.id +'">'+ value.name +'</option>'
+                    );
+
+                });
+
+            }
+
+        });
+
+    });
+
+
+    // LOAD CITIES
+
+    $("#state").change(function(){
+
+        var state_id = $(this).val();
+
+        $.ajax({
+
+            url: "/load-cities/",
+
+            data: {
+                'state': state_id
+            },
+
+            success: function(data){
+
+                $("#city").html('<option value="">Select City</option>');
+
+                $.each(data,function(key,value){
+
+                    $("#city").append(
+                        '<option value="'+ value.id +'">'+ value.name +'</option>'
+                    );
+
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

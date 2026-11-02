@@ -1,0 +1,50 @@
+<h3 class="mt-5 mb-4 text-center">
+    Available Courses
+</h3>
+
+<div class="row">
+
+{% for course in courses %}
+
+<div class="col-md-4 mb-4">
+
+    <div class="card shadow-sm h-100">
+
+        <div class="card-body text-center">
+
+            <h4 class="card-title">
+                {{ course.course_name }}
+            </h4>
+
+            <hr>
+
+            <p>
+                <strong>Duration:</strong>
+                {{ course.duration }}
+            </p>
+
+            <p>
+                <strong>Fee:</strong>
+                ₹{{ course.fee }}
+            </p>
+
+            <a href="/contact/"
+               class="btn btn-success">
+                Enquiry Now
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="alert alert-warning">
+    No Courses Available
+</div>
+
+{% endfor %}
+
+</div>

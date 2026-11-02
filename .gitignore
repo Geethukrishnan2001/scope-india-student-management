@@ -1,0 +1,6 @@
+.env
+db.sqlite3
+/media/
+/project_env/
+__pycache__/
+*.py[cod]
